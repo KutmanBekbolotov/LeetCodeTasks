@@ -24,12 +24,12 @@ int match(const char *line, const char *needle, int ignore_case) {
         }
 
         for (size_t i = 0; i < len_line; i++) {
-            lower_line[i] = tolower((unsigned char)line[i]);
+            lower_line[i] = (char)tolower((unsigned char)line[i]);
         }
         lower_line[len_line] = '\0';
 
         for (size_t i = 0; i < len_needle; i++) {
-            lower_needle[i] = tolower((unsigned char)needle[i]);
+            lower_needle[i] = (char)tolower((unsigned char)needle[i]);
         }
         lower_needle[len_needle] = '\0';
 
