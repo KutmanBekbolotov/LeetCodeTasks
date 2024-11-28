@@ -1,18 +1,26 @@
 #include <stdio.h>
 
-int main(){
-    int year;
-    printf("Enter year: \n");
-    scanf("%d", &year);
+int main() {
+    int N;
 
-    if(year % 4 == 0){
-        if(year % 100 != 0 || year % 400 != 0){
-            printf("Leap year\n");
-        }else{
-            printf("Not a leap year\n");
-        }
-    }else{
-        printf("Not a leap year\n");
+    printf("enter number: ");
+    scanf("%d", &N);
+
+    if (N <= 0) {
+        printf("Positive only\n");
+        return 1;
     }
+
+    int a = 0, b = 1;
+
+    printf("First number of sequence %d : ", N);
+    for (int i = 1; i <= N; i++) {
+        printf("%d ", a);  
+        int next = a + b; 
+        a = b;       
+        b = next;
+    }
+    printf("\n"); 
+
     return 0;
 }
