@@ -15,8 +15,13 @@ int match(const char *line, const char *needle, int ignore_case) {
     if (ignore_case) {
         size_t len_line = strlen(line);
         size_t len_needle = strlen(needle);
-        char lower_line[len_line + 1];
-        char lower_needle[len_needle + 1];
+
+        char *lower_line = (char *)malloc(len_line + 1);
+        char *lower_needle = (char *)malloc(len_needle + 1);
+        if (!lower_line || !lower_needle) {
+            fprintf(stderr, "Memory allocation failed\n");
+            exit(1);
+        }
 
         for (size_t i = 0; i < len_line; i++) {
             lower_line[i] = tolower((unsigned char)line[i]);
@@ -28,7 +33,12 @@ int match(const char *line, const char *needle, int ignore_case) {
         }
         lower_needle[len_needle] = '\0';
 
-        return strstr(lower_line, lower_needle) != NULL;
+        int result = strstr(lower_line, lower_needle) != NULL;
+
+        free(lower_line);
+        free(lower_needle);
+
+        return result;
     } else {
         return strstr(line, needle) != NULL;
     }
@@ -44,7 +54,6 @@ int main(int argc, char *argv[]) {
     const char *output_path = NULL;
     int ignore_case = 0;
     int output_specified = 0;
-
 
     for (int i = 1; i < argc; i++) {
         if (argv[i][0] == '-') {
