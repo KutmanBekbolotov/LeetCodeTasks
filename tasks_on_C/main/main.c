@@ -18,9 +18,10 @@ int main() {
         printf("%d ", a);  
         int next = a + b; 
         a = b;       
-        b = next;
+
     }
-    printf("\n"); 
+    printf("\n");
 
     return 0;
-}
+    
+

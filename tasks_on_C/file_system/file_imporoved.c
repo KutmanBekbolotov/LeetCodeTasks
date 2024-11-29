@@ -1,14 +1,13 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 
 void usage(const char *message) {
     if (message != NULL) {
-        fprintf(stderr, "%s\n", message);
+        fprintf(stderr, "%s\n", message); 
     }
-    fprintf(stderr, "Usage: ./program input-path needle [-i] [-o output-path]\n");
-    exit(1);
+    fprintf(stderr, "Usage: /program input-path needle [-i] [-o output-path]\n");
+    exit(1);  
 }
 
 int match(const char *line, const char *needle, int ignore_case) {
@@ -46,7 +45,7 @@ int match(const char *line, const char *needle, int ignore_case) {
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        usage("Too few arguments");
+        usage("Too few arguments"); 
     }
 
     const char *input_path = NULL;
@@ -86,10 +85,10 @@ int main(int argc, char *argv[]) {
     }
 
     if (input_path == NULL) {
-        usage("Input path not provided");
+        usage("Input path not provided"); 
     }
     if (needle == NULL) {
-        usage("Needle not provided");
+        usage("Needle not provided"); 
     }
 
     FILE *input_file = fopen(input_path, "r");
