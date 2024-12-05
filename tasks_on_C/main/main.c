@@ -1,28 +1,19 @@
-//while
-
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-    int N, i = 2, isPrime = 1;
 
-    printf("Enter number: \n");
-    scanf("%d", &N);
+    int n = 7;
 
-    if(N <= 1){
-        isPrime = 0;
-    } 
-
-    while( i <= N / 2 && isPrime){
-
-
+    for(int i=0; i < n; i++){
+        for(int j=0; j < n; j++){
+            if(j == i || j == n-i-1){
+                printf("*");
+            }else{
+                printf(" ");
+            }
+        }
+        printf("\n");
     }
-
-    if(isPrime){
-
-    }else{
-
-    }
-
     return 0;
-
 }
