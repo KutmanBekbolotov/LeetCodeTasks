@@ -1,15 +1,16 @@
-number = int(input('Enter number: '))
+x = float(input("Enter x: "))
+y = float(input("Enter y: "))
 
-if(number % 2 == 0):
-    print("Even")
-
-    if(number % 6 == 0):
-        print(f"{number} divided by 6")
-    else:
-        print(f"{number} not divided by 6")
-
+if x == 0 or y == 0:
+    print ("Dot on axis")
 else:
-    print("odd")
-
-    
-    
+    if x > 0:
+        if y> 0:
+            print("Dot on 1/4")
+        else:
+            print("Dot on 4/4")
+    else:
+        if y > 0:
+            print("Dot on 2/4")
+        else:
+            print("Dot 3/4")
