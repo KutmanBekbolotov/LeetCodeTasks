@@ -1,19 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(){
+    int arr[] = {1, 2, 3, 4};
+    arr[0] *= 2;
+    arr[3] *= 2;
 
-    int n = 7;
+    printf("%d\n", arr[0]);
+    printf("%d\n", arr[3]);
 
-    for(int i=0; i < n; i++){
-        for(int j=0; j < n; j++){
-            if(j == i || j == n-i-1){
-                printf("*");
-            }else{
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
     return 0;
 }
