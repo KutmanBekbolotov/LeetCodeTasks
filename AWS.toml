@@ -1,0 +1,10 @@
+AWS CLI -> comand line
+AWS SDK -> app
+AWS WEB -> site
+
+
+HEPSI
+service IAM
+1. CLI/ip
+2. ssh -i my-key.pem ec2-user@<EC2_IP>
+

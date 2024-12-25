@@ -1,29 +1,47 @@
+//Массив: [3, 5, 1, 10, 2, 7]
+//Максимальная куча: [10, 5, 7, 3, 2, 1]
+
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-using namespace std;
+void heapify(std::vector<int>& heap, int n, int i){
 
-vector<int> rotLeft(vector<int>& a, int d) {
-    int n = a.size();
-    d = d % n;  
-    vector<int> result(a.begin() + d, a.end());  
-    result.insert(result.end(), a.begin(), a.begin() + d);  
-    return result;
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+
+    if(left < n && heap[left] > heap[largest])
+        largest = left;
+
+    if(right < n && heap[right] > heap[right])
+        largest = right;
+
+    if(largest != i){
+        std::swap(heap[i], heap[largest]);
+
+        heapify(heap, n, largest);
+    }
 }
 
-int main() {
-    int n, d;
-    cin >> n >> d;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
+void buildHeap(std::vector<int>& heap){
+    int n = heap.size();
+
+    for(int i = n / 2 - 1; i >= 0; i--){
+        heapify(heap, n, i);
     }
-    
-    vector<int> result = rotLeft(a, d);
-    
-    for (int i = 0; i < n; ++i) {
-        cout << result[i] << " ";
+}
+
+int main(){
+    std::vector<int> heap = {3, 5, 1, 10, 2, 7};
+
+    buildHeap(heap);
+
+    std::cout << "Max heap: ";
+    for(int num : heap){
+        std::cout << num << " ";
     }
-    cout << endl;
+
     return 0;
 }

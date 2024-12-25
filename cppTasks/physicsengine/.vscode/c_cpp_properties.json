@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/include",
+                "/opt/homebrew/Cellar/sfml/2.6.2/include/SFML", // Указание на конкретную папку SFML
+                "/Users/ssd/C_basics/cppTasks/physicsengine"
+            ],
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}
