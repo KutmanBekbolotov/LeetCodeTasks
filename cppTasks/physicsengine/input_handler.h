@@ -1,7 +1,7 @@
 #ifndef INPUT_HANDLER_H
 #define INPUT_HANDLER_H
 
-#include <SFML/Graphics.hpp>
+
 #include <vector>
 #include "particle.h"
 #include "constraint.h"

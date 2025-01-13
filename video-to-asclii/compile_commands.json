@@ -1,8 +1,0 @@
-[
-    {
-        "directory": "/Users/ssd/C_basics/video-to-asclii",
-        "command": "g++ main.cpp -o main",
-        "file": "/Users/ssd/C_basics/video-to-asclii/main.cpp"
-
-    }
-]

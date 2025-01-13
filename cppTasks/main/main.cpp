@@ -1,46 +1,94 @@
-//Массив: [3, 5, 1, 10, 2, 7]
-//Максимальная куча: [10, 5, 7, 3, 2, 1]
-
 #include <iostream>
-#include <vector>
-#include <algorithm>
 
-void heapify(std::vector<int>& heap, int n, int i){
+struct Node {
+    int data;
+    Node* next;
+    Node(int val) : data(val), next(nullptr) {}
+};
 
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-
-
-    if(left < n && heap[left] > heap[largest])
-        largest = left;
-
-    if(right < n && heap[right] > heap[right])
-        largest = right;
-
-    if(largest != i){
-        std::swap(heap[i], heap[largest]);
-
-        heapify(heap, n, largest);
+Node* findMiddle(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
     }
+    return slow;
 }
 
-void buildHeap(std::vector<int>& heap){
-    int n = heap.size();
-
-    for(int i = n / 2 - 1; i >= 0; i--){
-        heapify(heap, n, i);
+Node* reverseList(Node* head) {
+    Node* prev = nullptr;
+    Node* current = head;
+    while (current) {
+        Node* nextTemp = current->next;
+        current->next = prev;
+        prev = current;
+        current = nextTemp;
     }
+    return prev;
 }
 
-int main(){
-    std::vector<int> heap = {3, 5, 1, 10, 2, 7};
+bool isPalindrome(Node* head) {
+    if (!head || !head->next) return true;
 
-    buildHeap(heap);
+    Node* middle = findMiddle(head);
 
-    std::cout << "Max heap: ";
-    for(int num : heap){
-        std::cout << num << " ";
+    Node* secondHalf = reverseList(middle);
+
+    Node* firstHalf = head;
+    Node* tempSecondHalf = secondHalf;
+    bool isPal = true;
+
+    while (tempSecondHalf) {
+        if (firstHalf->data != tempSecondHalf->data) {
+            isPal = false;
+            break;
+        }
+        firstHalf = firstHalf->next;
+        tempSecondHalf = tempSecondHalf->next;
+    }
+
+    reverseList(secondHalf);
+
+    return isPal;
+}
+
+void append(Node*& head, int value) {
+    if (!head) {
+        head = new Node(value);
+        return;
+    }
+    Node* temp = head;
+    while (temp->next) {
+        temp = temp->next;
+    }
+    temp->next = new Node(value);
+}
+
+void printList(Node* head) {
+    while (head) {
+        std::cout << head->data << " -> ";
+        head = head->next;
+    }
+    std::cout << "nullptr" << std::endl;
+}
+
+int main() {
+    Node* head = nullptr;
+
+    append(head, 1);
+    append(head, 2);
+    append(head, 3);
+    append(head, 2);
+    append(head, 1);
+
+    std::cout << "Исходный список: ";
+    printList(head);
+
+    if (isPalindrome(head)) {
+        std::cout << "Список является палиндромом." << std::endl;
+    } else {
+        std::cout << "Список не является палиндромом." << std::endl;
     }
 
     return 0;
