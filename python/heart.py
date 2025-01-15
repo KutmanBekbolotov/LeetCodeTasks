@@ -11,7 +11,7 @@ def heart1(k):
         math.cos(3 * k) - \
         math.cos(4 * k)
 
-speed(0)
+speed(0.001)
 bgcolor('black')
 colormode(255)
 
