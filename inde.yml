@@ -1,0 +1,20 @@
+YAML (YAML Ain't makrkup laguage)
+
+server:
+  host: "loacalhost"
+  port: 8080
+  database:
+    user: "admin"
+    password: "123" #ljefklj 
+    name: "mydb"
+
+fruits:
+  - apple
+  - orange
+  - banana
+
+  description: |
+    jkdjfkjsdkfjjfjsklsd
+    sdfjhsdjhfjkhsdjkhf
+    dsjkljfklsjdkfljksdjf
+    dskfjklsjdfjksjfjsjfjks
